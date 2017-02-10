@@ -18,6 +18,11 @@ var Person = function(name, yearOfBirth, job) {
 };
 
 var john = new Person("John", 1990, "teacher");
-console.log(john);
+var todd = new Person("Todd", 1979, "coder");
+var brenda = new Person("Brenda", 1978, "massage therapist");
+var emma = new Person("Emma", 2016, "baby");
 
 john.calculateAge();
+todd.calculateAge();
+brenda.calculateAge();
+emma.calculateAge();
