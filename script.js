@@ -15,7 +15,12 @@ var Person = function(name, yearOfBirth, job) {
 };
 
 Person.prototype.calculateAge = function() {
-	console.log(this.name + " is " + (2017 - this.yearOfBirth) + " years old.");
+	if (2017 - this.yearOfBirth === 1) {
+		console.log(this.name + " is " + (2017 - this.yearOfBirth) + " year old.");
+	}
+	else {
+		console.log(this.name + " is " + (2017 - this.yearOfBirth) + " years old.");
+	}
 }
 
 var john = new Person("John", 1990, "teacher");
@@ -27,3 +32,13 @@ john.calculateAge();
 todd.calculateAge();
 brenda.calculateAge();
 emma.calculateAge();
+
+var Car = function(make, model, year) {
+	this.make = make;
+	this.model = model;
+	this.year = year;
+}
+
+var civic = new Car("Honda", "Civic", 2016);
+
+console.log(todd.name + " drives a " + civic.year + " " + civic.make + " " + civic.model + ".");
