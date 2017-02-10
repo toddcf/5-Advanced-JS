@@ -23,6 +23,8 @@ Person.prototype.calculateAge = function() {
 	}
 }
 
+Person.prototype.lastName = "Smith";
+
 var john = new Person("John", 1990, "teacher");
 var todd = new Person("Todd", 1979, "coder");
 var brenda = new Person("Brenda", 1978, "massage therapist");
@@ -44,3 +46,6 @@ var rav = new Car("Toyota", "Rav4", 2002);
 
 console.log(todd.name + " drives a " + civic.year + " " + civic.make + " " + civic.model + ".");
 console.log(brenda.name + " drives a " + rav.year + " " + rav.make + " " + rav.model + ".");
+
+console.log(john.name + " " + john.lastName);
+console.log(todd.name + " " + todd.lastName);
