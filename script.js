@@ -8,6 +8,7 @@ var john = {
 };
 */
 
+/*
 var Person = function(name, yearOfBirth, job) {
 	this.name = name;
 	this.yearOfBirth = yearOfBirth;
@@ -49,3 +50,17 @@ console.log(brenda.name + " drives a " + rav.year + " " + rav.make + " " + rav.m
 
 console.log(john.name + " " + john.lastName);
 console.log(todd.name + " " + todd.lastName);
+*/
+
+// Object.create
+
+var personProto = {
+	calculateAge: function() {
+		console.log(2017 - yearOfBirth);
+	}
+};
+
+var john = Object.create(personProto);
+john.name = "John";
+john.yearOfBirth = 1990;
+john.job = "teacher";
