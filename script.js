@@ -40,5 +40,7 @@ var Car = function(make, model, year) {
 }
 
 var civic = new Car("Honda", "Civic", 2016);
+var rav = new Car("Toyota", "Rav4", 2002);
 
 console.log(todd.name + " drives a " + civic.year + " " + civic.make + " " + civic.model + ".");
+console.log(brenda.name + " drives a " + rav.year + " " + rav.make + " " + rav.model + ".");
