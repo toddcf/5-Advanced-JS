@@ -78,5 +78,23 @@ var jane = Object.create(personProto,
 var a = 23;
 var b = a;
 
+// Now mutate var a:
 a = 46;
 console.log("A = " + a + " | B = " + b);
+
+var obj1 = {
+	name: "John",
+	age: 26
+};
+
+var obj2 = obj1;
+
+// Now mutate the age on Object 1:
+obj1.age = 30;
+
+console.log("Object 1 Age = " + obj1.age + " | Object 2 Age = " + obj2.age);
+
+
+
+
+
