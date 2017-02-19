@@ -94,6 +94,23 @@ obj1.age = 30;
 
 console.log("Object 1 Age = " + obj1.age + " | Object 2 Age = " + obj2.age);
 
+// Functions
+var age = 27;
+var obj = {
+	name: "Jonas",
+	city: "Lisbon"
+};
+
+// Now ue a function to mutate the object's data:
+function change(a, b) {
+	a = 30,
+	b.city = "San Francisco";
+}
+
+change(age, obj);
+
+console.log("Age = " + age + " | City = " + obj.city);
+
 
 
 
