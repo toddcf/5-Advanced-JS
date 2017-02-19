@@ -124,12 +124,19 @@ function arrayCalc(arr, fn) {
 	return arrRes;
 }
 
+function isFullAge(el) {
+	return el >= 18;
+}
+
 function calculateAge(el) {
 	return 2017 - el;
 }
 
 var ages = arrayCalc(years, calculateAge);
 console.log(ages);
+
+var fullAges = arrayCalc(ages, isFullAge);
+console.log(fullAges);
 
 
 
