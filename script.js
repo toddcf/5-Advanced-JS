@@ -201,18 +201,37 @@ function game() {
 
 game();
 */
+/*
 // IIFE way:
+(function() {
+	var score = Math.random () * 10;
+	console.log(score >= 5);
+})();
+
+// IIFE, with parameters and arguments:
 (function(goodLuck) {
 	var score = Math.random () * 10;
 	console.log(score >= 5 - goodLuck);
 })(5);
+*/
 
+// Closures
 
+function retirement(retirementAge) {
+	var a = " years left until retirement.";
+	return function(yearOfBirth) {
+		var age = 2017 - yearOfBirth;
+		console.log((retirementAge - age) + a);
+	}
+}
 
+// Retirement age is 66 in the US, so:
+var retirementUS = retirement(66);
+// Now call this function and pass your birth year into it, and it will calculate how many years you have until retirement:
+retirementUS(1979);
 
-
-
-
+// Same thing, written a different way:
+retirement(66)(1979);
 
 
 
