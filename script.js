@@ -192,13 +192,20 @@ interviewQuestion("special forces operator")("Jack Bauer");
 */
 
 // Immediately Invoked Function Expressions (IIFE)
-
+/*
+// Normal way:
 function game() {
 	var score = Math.random () * 10;
 	console.log(score >= 5);
 }
 
 game();
+*/
+// IIFE way:
+(function() {
+	var score = Math.random () * 10;
+	console.log(score >= 5);
+})();
 
 
 
