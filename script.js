@@ -231,7 +231,14 @@ var retirementUS = retirement(66);
 retirementUS(1979);
 
 // Same thing, written a different way:
-retirement(66)(1979);
+// retirement(66)(1979);
+
+var retirementGermany = retirement(65);
+retirementGermany(1979);
+
+var retirementIceland = retirement(67);
+retirementIceland(1979);
+
 
 
 
