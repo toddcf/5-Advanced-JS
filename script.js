@@ -298,10 +298,12 @@ var emily = {
 	job: "designer"
 }
 
+// Set "this" parameter to the emily object instead of john using the CALL method:
 john.presentation.call(emily, "friendly", "afternoon");
+john.presentation.call(emily, "formal", "morning");
 
-
-
+// Same thing, but using the APPLY method, which takes an array instead:
+john.presentation.apply(emily, ["friendly", "afternoon"]);
 
 
 
