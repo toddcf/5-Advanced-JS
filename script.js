@@ -241,29 +241,18 @@ retirementIceland(1979);
 */
 // Interview questions rewritten using the power of closures:
 function interviewQuestion(job) {
-	var a = ", can you please explain what UX design is?";
-	var b = "What subject do you teach, ";
-	var c = ", how many confirmed kills do you have?";
-	var d = "Hello, ";
-	var e = ". What do you do?";
-	if (job === "designer") {
-		return function(name) {
-			console.log(name + a);
+	return function(name){
+		if (job === "designer") {
+			console.log(name + ", can you please explain what UX design is?");
 		}
-	}
-	else if (job === "teacher") {
-		return function(name) {
-			console.log(b + name + "?");
+		else if (job === "teacher") {
+			console.log("What subject do you teach, " + name + "?");
 		}
-	}
-	else if (job === "special forces operator") {
-		return function(name) {
-			console.log(name + c);
+		else if (job === "special forces operator") {
+			console.log(name + ", how many confirmed kills do you have?");
 		}
-	}
-	else {
-		return function(name) {
-			console.log(d + name + e);
+		else {
+			console.log("Hello, " + name + ". What do you do?");
 		}
 	}
 }
