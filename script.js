@@ -240,6 +240,7 @@ var retirementIceland = retirement(67);
 retirementIceland(1979);
 */
 // Interview questions rewritten using the power of closures:
+/*
 function interviewQuestion(job) {
 	return function(name){
 		if (job === "designer") {
@@ -271,6 +272,52 @@ var specialForcesQuestion = interviewQuestion("special forces operator");
 specialForcesQuestion("Jack Bauer");
 
 interviewQuestion("primal scream therapist")("Smacky");
+*/
+// Bind, Call, Apply:
+
+var john = {
+	name: "John",
+	age: 26,
+	job: "teacher",
+	presentation: function(style, timeOfDay) {
+		if (style === "formal") {
+			console.log("Good " + timeOfDay + ", ladies and gentlemen. I\'m " + this.name + ", and I\'m a " + this.job + " and I\'m " + this.age + " years old.");
+		}
+		else if (style === "friendly") {
+			console.log("Hey, what\'s up? I\'m " + this.name + ". I\'m a " + this.age + "-year-old " + this.job + ". Have a good " + timeOfDay + ".");
+		}
+	}
+};
+
+john.presentation("formal", "morning");
+john.presentation("friendly", "afternoon");
+
+/*
+var emily = {
+	name: "Emily",
+	age: 35,
+	job: "designer",
+	presentation: function(style, timeOfDay) {
+
+	}
+}
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
