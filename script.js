@@ -292,17 +292,13 @@ var john = {
 john.presentation("formal", "morning");
 john.presentation("friendly", "afternoon");
 
-/*
 var emily = {
 	name: "Emily",
 	age: 35,
-	job: "designer",
-	presentation: function(style, timeOfDay) {
-
-	}
+	job: "designer"
 }
-*/
 
+john.presentation.call(emily, "friendly", "afternoon");
 
 
 
