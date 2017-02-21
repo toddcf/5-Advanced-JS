@@ -216,7 +216,7 @@ game();
 */
 
 // Closures
-
+/*
 function retirement(retirementAge) {
 	var a = " years left until retirement.";
 	return function(yearOfBirth) {
@@ -238,6 +238,50 @@ retirementGermany(1979);
 
 var retirementIceland = retirement(67);
 retirementIceland(1979);
+*/
+// Interview questions rewritten using the power of closures:
+function interviewQuestion(job) {
+	var a = ", can you please explain what UX design is?";
+	var b = "What subject do you teach, ";
+	var c = ", how many confirmed kills do you have?";
+	var d = "Hello, ";
+	var e = ". What do you do?";
+	if (job === "designer") {
+		return function(name) {
+			console.log(name + a);
+		}
+	}
+	else if (job === "teacher") {
+		return function(name) {
+			console.log(b + name + "?");
+		}
+	}
+	else if (job === "special forces operator") {
+		return function(name) {
+			console.log(name + c);
+		}
+	}
+	else {
+		return function(name) {
+			console.log(d + name + e);
+		}
+	}
+}
+
+var teacherQuestion = interviewQuestion("teacher");
+teacherQuestion("John");
+
+
+var designerQuestion = interviewQuestion("designer");
+designerQuestion("Kate");
+designerQuestion("Mark");
+designerQuestion("Quentin");
+designerQuestion("Liz");
+
+var specialForcesQuestion = interviewQuestion("special forces operator");
+specialForcesQuestion("Jack Bauer");
+
+interviewQuestion("primal scream therapist")("Smacky");
 
 
 
