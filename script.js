@@ -274,7 +274,7 @@ specialForcesQuestion("Jack Bauer");
 interviewQuestion("primal scream therapist")("Smacky");
 */
 // Bind, Call, Apply:
-
+/*
 var john = {
 	name: "John",
 	age: 26,
@@ -292,6 +292,8 @@ var john = {
 john.presentation("formal", "morning");
 john.presentation("friendly", "afternoon");
 
+// Call:
+
 var emily = {
 	name: "Emily",
 	age: 35,
@@ -302,13 +304,47 @@ var emily = {
 john.presentation.call(emily, "friendly", "afternoon");
 john.presentation.call(emily, "formal", "morning");
 
+// Apply:
 // Same thing, but using the APPLY method, which takes an array instead:
 john.presentation.apply(emily, ["friendly", "afternoon"]);
 
+// Bind:
+
+var johnFriendly = john.presentation.bind(john, "friendly");
+// Now you only need the last argument.
+johnFriendly("morning");
+johnFriendly("night");
+
+var emilyFormal = john.presentation.bind(emily, "formal");
+// And again, you only need to pass in the last argument:
+emilyFormal("evening");
+*/
 
 
 
 
+var years = [1990, 1965, 1937, 2005, 1998];
+
+function arrayCalc(arr, fn) {
+	var arrRes = [];
+	for (i = 0; i < arr.length; i++) {
+		arrRes.push(fn(arr[i]));
+	}
+	return arrRes;
+}
+
+function calculateAge(el) {
+	return 2017 - el;
+}
+
+function isFullAge(limit, el) {
+	return el >= limit;
+}
+
+var ages = arrayCalc(years, calculateAge);
+var fullJapan = arrayCalc(ages, isFullAge.bind(this, 20));
+console.log(ages);
+console.log(fullJapan);
 
 
 
