@@ -400,15 +400,18 @@ EXPERT LEVEL BONUSES:
 			console.log("Game Over. Score: " + score);
 		}
 		else if (questionPrompt == randomQ.correct) {
-			score++;
-			console.log("Correct! Score: " + score);
+			console.log("Correct!");
+			scoring();
 			quiz();
 		}
 		else {
 			console.log("Sorry, that is incorrect.");
 			quiz();
 		}
-		
+	}
+	function scoring() {
+		score++;
+		console.log("Score: " + score);
 	}
 	quiz();
 })();
