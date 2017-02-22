@@ -416,7 +416,7 @@ EXPERT LEVEL BONUSES:
 		// Generate random number between 0 and 2:
 		var randomQ = qArray[Math.floor(Math.random() * qArray.length)]
 		qArray[randomQ].displayQuestion();
-		var questionPrompt = parseInt(prompt("Please type the number of the correct answer. Type \"exit\" to stop."));
+		var questionPrompt = prompt("Please type the number of the correct answer. Type \"exit\" to stop.");
 		if (ans !== "exit") {
 			qArray[randomQ].checkAnswer();
 			quiz();
