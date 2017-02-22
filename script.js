@@ -380,17 +380,20 @@ EXPERT LEVEL BONUSES:
 		this.correct = correct;
 	};
 
-	// Prototype to display the randomly selected question in the console log:
+	// Method to display the randomly selected question in the console log:
 	Question.prototype.displayQuestion = function() {
 		console.log(this.q);
 		for (var i = 0; i < this.choices.length; i ++) {
 			console.log(i + ": " this.choices[i]);
 		}
-		var questionPrompt = parseInt(prompt(randomQ.q));
-		if (questionPrompt == "exit") {
+	}
+
+	// Method to verify player's answer:
+	Question.prototype.checkAnswer = function(ans) {
+		if (ans == "exit") {
 			console.log("Game Over. Score: " + score);
 		}
-		else if (questionPrompt == randomQ.correct) {
+		else if (ans == this.correct) {
 			console.log("Correct!");
 			scoring();
 			quiz();
@@ -402,15 +405,17 @@ EXPERT LEVEL BONUSES:
 	}
 
 	// Questions to be passed into Function Constructor:
-	var q1 = new Question("What year was JFK shot? (Enter the number of the correct answer. Type \"exit\" to stop.)", ["1961", "1962", "1963"], 2);
-	var q2 = new Question("Where does Tucker Max hope they serve beer? (Enter the number of the correct answer. Type \"exit\" to stop.)", ["Heaven.", "Hell.", "His house."], 1);
-	var q3 = new Question("What color is the water tower in Corcoran? (Enter the number of the correct answer. Type \"exit\" to stop.)", ["Red", "White", "There is no water tower in Corcoran!"], 2);
+	var q1 = new Question("What year was JFK shot?", ["1961", "1962", "1963"], 2);
+	var q2 = new Question("Where does Tucker Max hope they serve beer?", ["Heaven.", "Hell.", "His house."], 1);
+	var q3 = new Question("What color is the water tower in Corcoran?", ["Red", "White", "There is no water tower in Corcoran!"], 2);
 
 	// Array containing the questions to be passed into Function Contructor:
 	var qArray = [q1, q2, q3];
 	// Generate random number between 0 and 2:
 	var randomQ = qArray[Math.floor(Math.random() * qArray.length)]
 	qArray[randomQ].displayQuestion();
+	var questionPrompt = parseInt(prompt("Please type the number of the correct answer. Type \"exit\" to stop."));
+	qArray[randomQ].checkAnswer();
 	var score = 0;
 
 	function quiz() {
