@@ -379,9 +379,9 @@ var Question = function(q, choices, correct) {
 };
 
 // Questions to be passed into Function Constructor:
-var q1 = new Question("What year was JFK shot?", ["0: 1961", "1: 1962", "2: 1963"], 2);
-var q2 = new Question("Where does Tucker Max hope they serve beer?", ["0: Heaven.", "1: Hell.", "2: His house."], 1);
-var q3 = new Question("What color is the water tower in Corcoran?", ["0: Red", "1: White", "2: There is no water tower in Corcoran!"], 2);
+var q1 = new Question("What year was JFK shot? (Enter the number of the correct answer.)", ["0: 1961", "1: 1962", "2: 1963"], 2);
+var q2 = new Question("Where does Tucker Max hope they serve beer? (Enter the number of the correct answer.)", ["0: Heaven.", "1: Hell.", "2: His house."], 1);
+var q3 = new Question("What color is the water tower in Corcoran? (Enter the number of the correct answer.)", ["0: Red", "1: White", "2: There is no water tower in Corcoran!"], 2);
 
 // Array containing the questions to be passed into Function Contructor:
 var qArray = [q1, q2, q3];
@@ -390,9 +390,9 @@ var qArray = [q1, q2, q3];
 var randomQ = function() {
 	var randomQ = qArray[Math.floor(Math.random() * 3)]
 	console.log(randomQ.q);
-	console.log(randomQ.choices[0]);
-	console.log(randomQ.choices[1]);
-	console.log(randomQ.choices[2]);
+	for (var i = 0; i < qArray.length; i ++) {
+		console.log(randomQ.choices[i]);
+	}
 	var questionPrompt = prompt(randomQ.q);
 	if (questionPrompt == randomQ.correct) {
 		console.log("Correct!");
