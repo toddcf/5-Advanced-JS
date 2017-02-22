@@ -387,7 +387,7 @@ var q3 = new Question("What color is the water tower in Corcoran? (Enter the num
 var qArray = [q1, q2, q3];
 
 // Method to randomly select a question (between 0 and 2):
-var quiz = function() {
+(function() {
 	var randomQ = qArray[Math.floor(Math.random() * 3)]
 	console.log(randomQ.q);
 	for (var i = 0; i < qArray.length; i ++) {
@@ -400,9 +400,7 @@ var quiz = function() {
 	else {
 		console.log("Sorry, that is incorrect.");
 	}
-}
-
-quiz();
+})();
 
 
 
