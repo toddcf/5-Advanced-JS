@@ -418,7 +418,7 @@ EXPERT LEVEL BONUSES:
 		qArray[randomQ].displayQuestion();
 		var questionPrompt = prompt("Please type the number of the correct answer. Type \"exit\" to stop.");
 		if (ans !== "exit") {
-			qArray[randomQ].checkAnswer();
+			qArray[randomQ].checkAnswer(parseInt(answer));
 			quiz();
 		}
 	}
