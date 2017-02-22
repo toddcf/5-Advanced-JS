@@ -394,6 +394,12 @@ var randomQ = function() {
 	console.log(randomQ.choices[1]);
 	console.log(randomQ.choices[2]);
 	prompt(randomQ.q);
+	if (prompt === this.correct) {
+		console.log("Correct!");
+	}
+	else {
+		console.log("Sorry, that is incorrect.");
+	}
 }
 
 randomQ();
