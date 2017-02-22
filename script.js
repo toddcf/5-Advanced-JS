@@ -387,6 +387,7 @@ EXPERT LEVEL BONUSES:
 
 	// Array containing the questions to be passed into Function Contructor:
 	var qArray = [q1, q2, q3];
+	var score = 0;
 	function quiz() {
 		// Generate random number between 0 and 2:
 		var randomQ = qArray[Math.floor(Math.random() * 3)]
@@ -396,10 +397,11 @@ EXPERT LEVEL BONUSES:
 		}
 		var questionPrompt = prompt(randomQ.q);
 		if (questionPrompt == "exit") {
-			console.log("Game Over.");
+			console.log("Game Over. Score: " + score);
 		}
 		else if (questionPrompt == randomQ.correct) {
-			console.log("Correct!");
+			score++;
+			console.log("Correct! Score: " + score);
 			quiz();
 		}
 		else {
