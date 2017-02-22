@@ -380,20 +380,11 @@ EXPERT LEVEL BONUSES:
 		this.correct = correct;
 	};
 
-	// Questions to be passed into Function Constructor:
-	var q1 = new Question("What year was JFK shot? (Enter the number of the correct answer. Type \"exit\" to stop.)", ["0: 1961", "1: 1962", "2: 1963"], 2);
-	var q2 = new Question("Where does Tucker Max hope they serve beer? (Enter the number of the correct answer. Type \"exit\" to stop.)", ["0: Heaven.", "1: Hell.", "2: His house."], 1);
-	var q3 = new Question("What color is the water tower in Corcoran? (Enter the number of the correct answer. Type \"exit\" to stop.)", ["0: Red", "1: White", "2: There is no water tower in Corcoran!"], 2);
-
-	// Array containing the questions to be passed into Function Contructor:
-	var qArray = [q1, q2, q3];
-	var score = 0;
-	function quiz() {
-		// Generate random number between 0 and 2:
-		var randomQ = qArray[Math.floor(Math.random() * qArray.length)]
-		console.log(randomQ.q);
-		for (var i = 0; i < qArray.length; i ++) {
-			console.log(randomQ.choices[i]);
+	// Prototype to display the randomly selected question in the console log:
+	Question.prototype.displayQuestion() {
+		console.log(this.q);
+		for (var i = 0; i < this.choices.length; i ++) {
+			console.log(i + ": " this.choices[i]);
 		}
 		var questionPrompt = prompt(randomQ.q);
 		if (questionPrompt == "exit") {
@@ -408,6 +399,21 @@ EXPERT LEVEL BONUSES:
 			console.log("Sorry, that is incorrect.");
 			quiz();
 		}
+	}
+
+	// Questions to be passed into Function Constructor:
+	var q1 = new Question("What year was JFK shot? (Enter the number of the correct answer. Type \"exit\" to stop.)", ["1961", "1962", "1963"], 2);
+	var q2 = new Question("Where does Tucker Max hope they serve beer? (Enter the number of the correct answer. Type \"exit\" to stop.)", ["Heaven.", "Hell.", "His house."], 1);
+	var q3 = new Question("What color is the water tower in Corcoran? (Enter the number of the correct answer. Type \"exit\" to stop.)", ["Red", "White", "There is no water tower in Corcoran!"], 2);
+
+	// Array containing the questions to be passed into Function Contructor:
+	var qArray = [q1, q2, q3];
+	var score = 0;
+	function quiz() {
+		// Generate random number between 0 and 2:
+		var randomQ = qArray[Math.floor(Math.random() * qArray.length)]
+		// console.log(randomQ.q);
+		
 	}
 	function scoring() {
 		score++;
