@@ -371,23 +371,23 @@ EXPERT LEVEL BONUSES:
 11. Display the score in the console. Use another method for this.
 */
 
-// Function Constructor for Questions:
-var Question = function(q, choices, correct) {
-	this.q = q;
-	this.choices = choices;
-	this.correct = correct;
-};
-
-// Questions to be passed into Function Constructor:
-var q1 = new Question("What year was JFK shot? (Enter the number of the correct answer.)", ["0: 1961", "1: 1962", "2: 1963"], 2);
-var q2 = new Question("Where does Tucker Max hope they serve beer? (Enter the number of the correct answer.)", ["0: Heaven.", "1: Hell.", "2: His house."], 1);
-var q3 = new Question("What color is the water tower in Corcoran? (Enter the number of the correct answer.)", ["0: Red", "1: White", "2: There is no water tower in Corcoran!"], 2);
-
-// Array containing the questions to be passed into Function Contructor:
-var qArray = [q1, q2, q3];
-
-// Method to randomly select a question (between 0 and 2):
+// Everything is inside an IIFE for data privacy and so as not to interfere with any other programmers' code:
 (function() {
+	// Function Constructor for Questions:
+	var Question = function(q, choices, correct) {
+		this.q = q;
+		this.choices = choices;
+		this.correct = correct;
+	};
+
+	// Questions to be passed into Function Constructor:
+	var q1 = new Question("What year was JFK shot? (Enter the number of the correct answer.)", ["0: 1961", "1: 1962", "2: 1963"], 2);
+	var q2 = new Question("Where does Tucker Max hope they serve beer? (Enter the number of the correct answer.)", ["0: Heaven.", "1: Hell.", "2: His house."], 1);
+	var q3 = new Question("What color is the water tower in Corcoran? (Enter the number of the correct answer.)", ["0: Red", "1: White", "2: There is no water tower in Corcoran!"], 2);
+
+	// Array containing the questions to be passed into Function Contructor:
+	var qArray = [q1, q2, q3];
+	// Generate random number between 0 and 2:
 	var randomQ = qArray[Math.floor(Math.random() * 3)]
 	console.log(randomQ.q);
 	for (var i = 0; i < qArray.length; i ++) {
