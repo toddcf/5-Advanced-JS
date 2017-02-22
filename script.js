@@ -381,12 +381,12 @@ EXPERT LEVEL BONUSES:
 	};
 
 	// Prototype to display the randomly selected question in the console log:
-	Question.prototype.displayQuestion() {
+	Question.prototype.displayQuestion = function() {
 		console.log(this.q);
 		for (var i = 0; i < this.choices.length; i ++) {
 			console.log(i + ": " this.choices[i]);
 		}
-		var questionPrompt = prompt(randomQ.q);
+		var questionPrompt = parseInt(prompt(randomQ.q));
 		if (questionPrompt == "exit") {
 			console.log("Game Over. Score: " + score);
 		}
@@ -408,11 +408,14 @@ EXPERT LEVEL BONUSES:
 
 	// Array containing the questions to be passed into Function Contructor:
 	var qArray = [q1, q2, q3];
+	// Generate random number between 0 and 2:
+	var randomQ = qArray[Math.floor(Math.random() * qArray.length)]
+	qArray[randomQ].displayQuestion();
 	var score = 0;
+
 	function quiz() {
-		// Generate random number between 0 and 2:
-		var randomQ = qArray[Math.floor(Math.random() * qArray.length)]
-		// console.log(randomQ.q);
+		
+
 		
 	}
 	function scoring() {
