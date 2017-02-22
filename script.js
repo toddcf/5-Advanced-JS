@@ -396,11 +396,9 @@ EXPERT LEVEL BONUSES:
 		else if (ans == this.correct) {
 			console.log("Correct!");
 			scoring();
-			quiz();
 		}
 		else {
 			console.log("Sorry, that is incorrect.");
-			quiz();
 		}
 	}
 
@@ -411,22 +409,25 @@ EXPERT LEVEL BONUSES:
 
 	// Array containing the questions to be passed into Function Contructor:
 	var qArray = [q1, q2, q3];
-	// Generate random number between 0 and 2:
-	var randomQ = qArray[Math.floor(Math.random() * qArray.length)]
-	qArray[randomQ].displayQuestion();
-	var questionPrompt = parseInt(prompt("Please type the number of the correct answer. Type \"exit\" to stop."));
-	qArray[randomQ].checkAnswer();
+	// Score Counter:
 	var score = 0;
 
 	function quiz() {
-		
-
-		
+		// Generate random number between 0 and 2:
+		var randomQ = qArray[Math.floor(Math.random() * qArray.length)]
+		qArray[randomQ].displayQuestion();
+		var questionPrompt = parseInt(prompt("Please type the number of the correct answer. Type \"exit\" to stop."));
+		if (ans !== "exit") {
+			qArray[randomQ].checkAnswer();
+			quiz();
+		}
 	}
+	
 	function scoring() {
 		score++;
 		console.log("Score: " + score);
 	}
+	
 	quiz();
 })();
 
