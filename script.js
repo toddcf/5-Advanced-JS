@@ -390,7 +390,7 @@ EXPERT LEVEL BONUSES:
 	var score = 0;
 	function quiz() {
 		// Generate random number between 0 and 2:
-		var randomQ = qArray[Math.floor(Math.random() * 3)]
+		var randomQ = qArray[Math.floor(Math.random() * qArray.length)]
 		console.log(randomQ.q);
 		for (var i = 0; i < qArray.length; i ++) {
 			console.log(randomQ.choices[i]);
