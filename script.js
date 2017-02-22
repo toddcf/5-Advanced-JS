@@ -393,8 +393,8 @@ var randomQ = function() {
 	console.log(randomQ.choices[0]);
 	console.log(randomQ.choices[1]);
 	console.log(randomQ.choices[2]);
-	prompt(randomQ.q);
-	if (prompt === this.correct) {
+	var questionPrompt = prompt(randomQ.q);
+	if (questionPrompt == randomQ.correct) {
 		console.log("Correct!");
 	}
 	else {
