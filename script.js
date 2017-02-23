@@ -374,32 +374,44 @@ EXPERT LEVEL BONUSES:
 // Everything is inside an IIFE for data privacy and so as not to interfere with any other programmers' code:
 (function() {
 	// Function Constructor for Questions:
-	var Question = function(q, choices, correct) {
-		this.q = q;
-		this.choices = choices;
+	var Question = function(question, answers, correct) {
+		this.question = question;
+		this.answers = answers;
 		this.correct = correct;
 	};
 
 	// Method to display the randomly selected question in the console log:
 	Question.prototype.displayQuestion = function() {
 		console.log(this.q);
-		for (var i = 0; i < this.choices.length; i ++) {
-			console.log(i + ": " this.choices[i]);
+		for (var i = 0; i < this.answers.length; i ++) {
+			console.log(i + ": " + this.answers[i]);
 		}
 	}
 
 	// Method to verify player's answer:
-	Question.prototype.checkAnswer = function(ans) {
+	Question.prototype.checkAnswer = function(ans, callback) {
+		var sc;
 		if (ans == "exit") {
-			console.log("Game Over. Score: " + score);
+			console.log("Game Over.");
 		}
 		else if (ans == this.correct) {
 			console.log("Correct!");
-			scoring();
+			// Increase score and display it:
+			sc = callback(true);
 		}
 		else {
 			console.log("Sorry, that is incorrect.");
+			// Display score but do not increase it:
+			sc = callback(false);
 		}
+		this.displayScore(sc);
+	}
+
+	// Display score in the console:
+	Question.prototype.displayScore = function(score) {
+		console.log("Your current score is: " + score);
+		// Separater line for viewing ease:
+		console.log("---------------------");
 	}
 
 	// Questions to be passed into Function Constructor:
@@ -410,7 +422,18 @@ EXPERT LEVEL BONUSES:
 	// Array containing the questions to be passed into Function Contructor:
 	var qArray = [q1, q2, q3];
 	// Score Counter:
-	var score = 0;
+	function score() {
+		var sc = 0;
+		return function(correct) {
+			if (correct) {
+				sc++;
+			}
+			return sc;
+		}
+	}
+
+	var keepScore = score();
+	
 
 	function quiz() {
 		// Generate random number between 0 and 2:
@@ -418,14 +441,9 @@ EXPERT LEVEL BONUSES:
 		qArray[randomQ].displayQuestion();
 		var questionPrompt = prompt("Please type the number of the correct answer. Type \"exit\" to stop.");
 		if (ans !== "exit") {
-			qArray[randomQ].checkAnswer(parseInt(answer));
+			qArray[randomQ].checkAnswer(parseInt(answer, keepScore));
 			quiz();
 		}
-	}
-	
-	function scoring() {
-		score++;
-		console.log("Score: " + score);
 	}
 	
 	quiz();
@@ -437,3 +455,81 @@ EXPERT LEVEL BONUSES:
 
 
 
+(function() {
+    function Question(question, answers, correct) {
+        this.question = question;
+        this.answers = answers;
+        this.correct = correct;
+    }
+
+    Question.prototype.displayQuestion = function() {
+        console.log(this.question);
+
+        for (var i = 0; i < this.answers.length; i++) {
+            console.log(i + ': ' + this.answers[i]);
+        }
+    }
+
+    Question.prototype.checkAnswer = function(ans, callback) {
+        var sc;
+        
+        if (ans === this.correct) {
+            console.log('Correct answer!');
+            sc = callback(true);
+        } else {
+            console.log('Wrong answer. Try again :)');
+            sc = callback(false);
+        }
+        
+        this.displayScore(sc);
+    }
+
+    Question.prototype.displayScore = function(score) {
+        console.log('Your current score is: ' + score);
+        console.log('------------------------------');
+    }
+    
+    
+    var q1 = new Question('Is JavaScript the coolest programming language in the world?',
+                          ['Yes', 'No'],
+                          0);
+
+    var q2 = new Question('What is the name of this course\'s teacher?',
+                          ['John', 'Micheal', 'Jonas'],
+                          2);
+
+    var q3 = new Question('What does best describe coding?',
+                          ['Boring', 'Hard', 'Fun', 'Tediuos'],
+                          2);
+    
+    var questions = [q1, q2, q3];
+    
+    function score() {
+        var sc = 0;
+        return function(correct) {
+            if (correct) {
+                sc++;
+            }
+            return sc;
+        }
+    }
+    var keepScore = score();
+    
+    
+    function nextQuestion() {
+
+        var n = Math.floor(Math.random() * questions.length);
+        questions[n].displayQuestion();
+
+        var answer = prompt('Please select the correct answer.');
+
+        if(answer !== 'exit') {
+            questions[n].checkAnswer(parseInt(answer), keepScore);
+            
+            nextQuestion();
+        }
+    }
+    
+    nextQuestion();
+    
+})();
