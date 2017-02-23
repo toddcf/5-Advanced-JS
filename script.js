@@ -382,7 +382,7 @@ EXPERT LEVEL BONUSES:
 
 	// Method to display the randomly selected question in the console log:
 	Question.prototype.displayQuestion = function() {
-		console.log(this.q);
+		console.log(this.question);
 		for (var i = 0; i < this.answers.length; i ++) {
 			console.log(i + ": " + this.answers[i]);
 		}
@@ -391,10 +391,7 @@ EXPERT LEVEL BONUSES:
 	// Method to verify player's answer:
 	Question.prototype.checkAnswer = function(ans, callback) {
 		var sc;
-		if (ans == "exit") {
-			console.log("Game Over.");
-		}
-		else if (ans == this.correct) {
+		if (ans == this.correct) {
 			console.log("Correct!");
 			// Increase score and display it:
 			sc = callback(true);
@@ -420,7 +417,7 @@ EXPERT LEVEL BONUSES:
 	var q3 = new Question("What color is the water tower in Corcoran?", ["Red", "White", "There is no water tower in Corcoran!"], 2);
 
 	// Array containing the questions to be passed into Function Contructor:
-	var qArray = [q1, q2, q3];
+	var questions = [q1, q2, q3];
 	// Score Counter:
 	function score() {
 		var sc = 0;
@@ -435,18 +432,18 @@ EXPERT LEVEL BONUSES:
 	var keepScore = score();
 	
 
-	function quiz() {
+	function nextQuestion() {
 		// Generate random number between 0 and 2:
-		var randomQ = qArray[Math.floor(Math.random() * qArray.length)]
-		qArray[randomQ].displayQuestion();
-		var questionPrompt = prompt("Please type the number of the correct answer. Type \"exit\" to stop.");
-		if (ans !== "exit") {
-			qArray[randomQ].checkAnswer(parseInt(answer, keepScore));
-			quiz();
+		var n = Math.floor(Math.random() * questions.length);
+		questions[n].displayQuestion();
+		var answer = prompt("Please type the number of the correct answer. Type \"exit\" to stop.");
+		if (answer !== "exit") {
+			questions[n].checkAnswer(parseInt(answer), keepScore);
+			nextQuestion();
 		}
 	}
 	
-	quiz();
+	nextQuestion();
 })();
 
 
@@ -455,81 +452,3 @@ EXPERT LEVEL BONUSES:
 
 
 
-(function() {
-    function Question(question, answers, correct) {
-        this.question = question;
-        this.answers = answers;
-        this.correct = correct;
-    }
-
-    Question.prototype.displayQuestion = function() {
-        console.log(this.question);
-
-        for (var i = 0; i < this.answers.length; i++) {
-            console.log(i + ': ' + this.answers[i]);
-        }
-    }
-
-    Question.prototype.checkAnswer = function(ans, callback) {
-        var sc;
-        
-        if (ans === this.correct) {
-            console.log('Correct answer!');
-            sc = callback(true);
-        } else {
-            console.log('Wrong answer. Try again :)');
-            sc = callback(false);
-        }
-        
-        this.displayScore(sc);
-    }
-
-    Question.prototype.displayScore = function(score) {
-        console.log('Your current score is: ' + score);
-        console.log('------------------------------');
-    }
-    
-    
-    var q1 = new Question('Is JavaScript the coolest programming language in the world?',
-                          ['Yes', 'No'],
-                          0);
-
-    var q2 = new Question('What is the name of this course\'s teacher?',
-                          ['John', 'Micheal', 'Jonas'],
-                          2);
-
-    var q3 = new Question('What does best describe coding?',
-                          ['Boring', 'Hard', 'Fun', 'Tediuos'],
-                          2);
-    
-    var questions = [q1, q2, q3];
-    
-    function score() {
-        var sc = 0;
-        return function(correct) {
-            if (correct) {
-                sc++;
-            }
-            return sc;
-        }
-    }
-    var keepScore = score();
-    
-    
-    function nextQuestion() {
-
-        var n = Math.floor(Math.random() * questions.length);
-        questions[n].displayQuestion();
-
-        var answer = prompt('Please select the correct answer.');
-
-        if(answer !== 'exit') {
-            questions[n].checkAnswer(parseInt(answer), keepScore);
-            
-            nextQuestion();
-        }
-    }
-    
-    nextQuestion();
-    
-})();
